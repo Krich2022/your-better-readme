@@ -15,6 +15,11 @@ const questions = [
     type: "input",
   },
   {
+    name: "repoLink",
+    message: "What is the link to the repo?",
+    type: "link",
+  },
+  {
     name: "title",
     message: "What is the name of your project?",
     type: "input",
@@ -29,14 +34,14 @@ const questions = [
     message: "What kind of license should your project have?",
     type: "list",
     choices: [
-      "MIT License",
-      "GNU AGPLv3",
-      "GNU GPLv3",
-      "GNGU LGPLv3",
-      "Mozilla Public License 2.0",
-      "Apache License 2.0",
-      "Boost Software License 1.0",
-      "The Unlicense",
+      { name: "MIT License", value: "MIT" },
+      { name: "GNU AGPLv3", value: "AGPL-3.0" },
+      { name: "GNU GPLv3", value: "GPL-3.0" },
+      { name: "GNU LGPLv3", value: "LGPL-3.0" },
+      { name: "Mozilla Public License 2.0", value: "MPL-2.0" },
+      { name: "Apache License 2.0", value: "Apache-2.0" },
+      { name: "Boost Software License 1.0", value: "BSL-1.0" },
+      { name: "The Unlicense", value: "" },
     ],
   },
   {
@@ -47,6 +52,11 @@ const questions = [
   {
     name: "test",
     message: "What command should be used to test?",
+    type: "input",
+  },
+  {
+    name: "usage",
+    message: "How do you use the application?",
     type: "input",
   },
   {
@@ -73,9 +83,7 @@ function writeToFile(fileName, data) {
 const init = async () => {
   const data = await inquirer.prompt(questions);
   const markdown = generateMarkdown(data);
-  console.log(data);
-  console.log(markdown);
-  writeToFile(data.title, markdown);
+  return writeToFile(`${data.title}.md`, markdown);
 };
 
 // Function call to initialize app
