@@ -45,11 +45,12 @@ ${data.desc}
 
 ## Table of Contents
 
-- Installation
-- Usage
-- License
-- Contributing
-- Contact
+1. [Installation](#installation)
+2. [Usage](#usage)
+4. [Repository](#repository)
+4. [License](#license)
+5. [Contributing](#contributing)
+6. [Contact](#contact)
 
 ## Installation
 
